@@ -4,21 +4,17 @@
 ; Start
 ;
 
-mov bp, 0x8000
-mov sp, bp
+;mov bp, 0x8000
+;mov sp, bp
 
-mov dx, 0x1234
-call print_hex
+push message
+call print_message
+jmp $
 
-jmp $ ; eternal loop to itself
 
 ;
 ; Functions
 ;
-print_hex:
-    exit_print_message:
-        ret
-
 print_message:
     pop bx
     pop si
@@ -29,15 +25,15 @@ print_message:
     int 0x10
     jmp print_message
     exit_print_message:
-        push bx
+        popa
         ret
 
 ;
 ; Data
-;
+;  
+message:
+    db 'Hello, Stack!', 0
 
-HEX_TEMPLATE:
-    db '0x???? ',0
 ;
 ; Padding and magic number
 ;
