@@ -1,8 +1,9 @@
-List of commands:
+# List of commands
+
 Create the file, because `hexedit` needs an existing file, and open it in `hexedit´
 ```bash
-touch binary_jump.bin
-hexedit binary_jump.bin
+touch binary_jump{,_short}.bin
+hexedit binary_jump{,short}.bin
 ```
 
 View the file in `hexyl`
@@ -26,3 +27,11 @@ genisoimage -v -J -r -b binary_jump.bin -o firstBoot.iso .
 ```
 
 ISO file is usable in a virtualization software, e.g., VirtualBox, Hyper-V, etc.
+
+## Opcodes used
+In `binary_jump_short.bin`:
+!OpCode|Instruction|Description|
+|------|-----------|-----------|
+|EB cb|JMP rel8| Relative short jump with 8 bit two's compliment offset|
+|E9 cw|JMP rel16| Relative near jump with 16 bit two's compliment offset|
+
