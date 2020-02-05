@@ -30,6 +30,7 @@ ISO file is usable in a virtualization software, e.g., VirtualBox, Hyper-V, etc.
 
 ## Opcodes used
 In `binary_jump_short.bin`:
+
 |OpCode|Instruction|Description|
 |------|-----------|-----------|
 |EB cb|JMP rel8| Relative short jump with 8 bit two's compliment offset|
