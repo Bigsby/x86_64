@@ -6,7 +6,17 @@ touch binary_jump{,_short}.bin
 hexedit binary_jump{,short}.bin
 ```
 
-View the file in `hexyl`
+View the file with `od`
+```
+od -Ax -tx2 -w16 binary_jump_short.bin
+```
+
+View the file with `hexdump`
+```
+hexdump -C binary_jump_short.bin
+```
+
+View the file with `hexyl`
 ```bash
 hexyl binary_jump.bin
 ```
