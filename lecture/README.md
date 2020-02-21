@@ -1,6 +1,6 @@
 # The YouTube playlist
 
-[OS Dev playlist](https://youtube.com/playlist?list=PLrJApd3VJDK0gVMU3lZBVHBCgC1EeK)
+[OS Dev playlist](https://www.youtube.com/playlist?list=PLrJApd3VJDK0gVMsU3lZBVHBCgC1EeK--)
 
 # Topics
 
