@@ -9,7 +9,7 @@ BINFILE = $(BOOT).bin
 
 # linker
 $(BINFILE): $(OBJFILE)
-	ld -o $@ --oformat binary -e _start $?
+	ld -o $@ --oformat binary --Ttext 0x7C00 -e _start $?
 
 # assembler
 $(OBJFILE): *.S
