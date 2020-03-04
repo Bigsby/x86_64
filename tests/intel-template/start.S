@@ -1,0 +1,5 @@
+mov $0x0e,%ah
+mov $'X',%al
+int $0x10
+
+

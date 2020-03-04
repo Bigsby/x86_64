@@ -2,9 +2,7 @@
 .global _start
 
 _start:
-    mov $0x0e,%ah
-    mov $'X',%al
-    int $0x10
+.include "start.S"
 
 _idle:
     jmp _idle
