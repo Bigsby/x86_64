@@ -4,8 +4,7 @@
 _start:
 .include "start.S"
 
-_idle:
-    jmp _idle
+jmp .
 
 .fill 510-(.-_start),1,0
 .word 0xaa55
