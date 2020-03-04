@@ -1,16 +1,16 @@
 BOOT = boot
 SFILE = $(BOOT).S
-INTFILE = $(BOOT).o
+OBJFILE = $(BOOT).o
 BINFILE = $(BOOT).bin
 
-$(BINFILE): $(INTFILE)
+$(BINFILE): $(OBJFILE)
 	ld -o $@ --oformat binary -e _start $?
 
-$(INTFILE): $(SFILE)
+$(OBJFILE): $(SFILE)
 	as -o $@ $?
 
 run: $(BINFILE)
 	qemu-system-x86_64 -curses -drive file=$?,format=raw
 
 clean:
-	rm $(INTFILE) $(BINFILE) 
+	rm $(OBJFILE) $(BINFILE) 
