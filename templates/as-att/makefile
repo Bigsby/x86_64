@@ -7,9 +7,12 @@ OBJFILE = $(BOOT).o
 # output binary file
 BINFILE = $(BOOT).bin
 
+$(BINFILE): boot.ld
+	objcopy -O binary -j .text $? $@
+
 # linker
-$(BINFILE): $(OBJFILE)
-	ld -o $@ --oformat binary --Ttext 0x7C00 -e _start $?
+boot.ld: $(OBJFILE)
+	ld -r -o $@ -Ttext 0x7C00 -s -e _start $?
 
 # assembler
 $(OBJFILE): *.S
