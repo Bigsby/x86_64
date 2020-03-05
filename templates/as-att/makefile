@@ -19,6 +19,9 @@ $(OBJFILE): *.S
 # open boot.bin in qemu
 run: $(BINFILE)
 	qemu-system-x86_64 -curses -drive file=$?,format=raw
+run-graphic: $(BINFILE)
+	qemu-system-x86_64 -drive file=$?,format=raw
+
 
 # remove result files
 clean:

@@ -12,6 +12,9 @@ $(BIN): $(ASM)
 # run boot.bin in qemu
 run: $(BIN)
 	qemu-system-x86_64 -curses -drive file=$?,format=raw	
+run-graphic: $(BIN)
+	qemu-system-x86_64 -drive file=$?,format=raw
+
 
 # remove compiled file
 clean:
