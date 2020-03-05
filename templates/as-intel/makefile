@@ -4,12 +4,18 @@ BOOT = boot
 SFILE = $(BOOT).S
 # object file
 OBJFILE = $(BOOT).o
+# linked file
+LINKEDFILE = $(BOOT).ld
 # output binary file
 BINFILE = $(BOOT).bin
 
+# tramsfor to binary
+$(BINFILE): $(LINKEDFILE)
+	objcopy -O binary -j .text $< $@
+
 # linker
-$(BINFILE): $(OBJFILE)
-	ld -o $@ --oformat binary --Ttext 0x7C00 -e _start $?
+$(LINKEDFILE): $(OBJFILE)
+	ld -r -o $@ -Ttext 0x7C00 -s -e _start $?
 
 # assembler with inter syntax options
 $(OBJFILE): *.S
@@ -24,4 +30,4 @@ run-graphic: $(BINFILE)
 
 # remove compiled files
 clean:
-	rm $(OBJFILE) $(BINFILE) 
+	rm $(LINKEDFILE) $(OBJFILE) $(BINFILE) 

@@ -4,12 +4,18 @@ BOOT = boot
 ENTRYFILE = $(BOOT).S
 # object file
 OBJFILE = $(BOOT).o
+# linked file
+LINKEDFILE = $(BOOT).ld
 # output binary file
 BINFILE = $(BOOT).bin
 
+# transform to binary
+$(BINFILE): $(LINKEDFILE)
+	objcopy -O binary -j .text $< $@
+    
 # linker
-$(BINFILE): $(OBJFILE)
-	ld -o $@ --oformat binary --Ttext 0x7C00 -e _start $?
+$(LINKEDFILE): $(OBJFILE)
+	ld -r -o $@ -Ttext 0x7C00 -s -e _start $<
 
 # assembler
 $(OBJFILE): $(ENTRYFILE) *.S
@@ -24,4 +30,4 @@ run-graphic: $(BINFILE)
 
 # remove result files
 clean:
-	rm $(OBJFILE) $(BINFILE) 
+	rm $(LINKEDFILE) $(OBJFILE) $(BINFILE) 
