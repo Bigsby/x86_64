@@ -14,7 +14,8 @@ run: $(BIN)
 	qemu-system-x86_64 -curses -drive file=$?,format=raw	
 run-graphic: $(BIN)
 	qemu-system-x86_64 -drive file=$?,format=raw
-
+debug: $(BIN)
+	qemu-system-x86_64 -curses -S -gdb tcp::9000 -drive file=$?,format=raw	
 
 # remove compiled file
 clean:
