@@ -6,8 +6,8 @@ ASM = $(BOOT).asm
 BIN = $(BOOT).bin
 
 # assembler
-$(BIN): $(ASM)
-	nasm -f bin -o $@ $? 
+$(BIN): *.asm 
+	nasm -f bin -o $@ $(ASM)
 
 # run boot.bin in qemu
 run: $(BIN)
