@@ -21,6 +21,11 @@ debug: $(BIN)
 debug-graphic: $(BIN)
 	qemu-system-x86_64 -S -s -drive file=$?,format=raw
 
+gdb:
+	gdb -ex="target remote localhost:1234"
+
+gdb-comms:
+	gdb -x gdb-commands
 
 # remove compiled file
 clean:
